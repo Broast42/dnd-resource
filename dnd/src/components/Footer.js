@@ -11,8 +11,9 @@ const Footer = () => {
                 </a>
             </h3>
             <p>All information found on this site is provided through <a href="http://www.dnd5eapi.co/">D&D 5e API</a> Any inaccuracies or corrections pertaining to data should be directed <a href="https://github.com/bagelbits/5e-srd-api"> here</a></p>
-            <p>Any other issues such as bugs, mis-calculations, or general UI problems please email me at: <address> rjarrettdowd@yahoo.com</address> 
-            </p>
+            <p>Any other issues such as bugs, mis-calculations, or general UI problems please email me at:</p>
+            <address> rjarrettdowd@yahoo.com</address> 
+
         </footer>
     );
 };

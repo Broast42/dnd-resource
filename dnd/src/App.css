@@ -58,36 +58,53 @@ html {
 
 h1{
     font-size: 2.5rem;
-    padding: 5px;
+    padding: 5px 0;
 }
 
 h2{
     font-size: 2.2rem;
-    padding: 5px;
+    padding: 5px 0;
 }
 
 h3{
     font-size: 1.8rem;
-    padding: 5px;
+    padding: 5px 0;
 }
 
 h4{
   font-size: 1.6rem;
-  padding: 5px;
+  padding: 5px 0;
 }
 
 h5{
   font-size: 1.4rem;
-  padding: 5px;
+  padding: 5px 0;
 }
 
 h6{
   font-size: 1rem;
-  padding: 5px;
+  padding: 5px 0;
 }
 
 p {
   font-size: 1.6rem;
+
+}
+
+.center-text{
+  text-align: center;
+}
+
+.red{
+  color: red;
+}
+
+.orange{
+  color: #cc7a00;
+}
+
+.padding5{
+  padding: 5px;
 }
 
 header {
@@ -195,24 +212,27 @@ footer address{
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 800px;
+  min-height: 800px;
   padding: 15px;
 }
 
 .form-box{
   width: 70%;
-  height: 150px;
+  min-height: 150px;
   margin: 0 auto;
   background: #404040;
   border: 2px solid #b30059;
   border-radius: 15px;
   padding: 15px;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
 }
 
 .form-active{
-  display: block;
+  display: flex;
   animation-name: popin;
   animation-duration: 1s;
 }
@@ -228,6 +248,10 @@ footer address{
   display: none;
 }
 
+.self-right{
+  align-self: flex-end;
+}
+
 @keyframes popin {
   from{transform: scale(0,0)}
   to{transform: scale(1,1)}
@@ -238,4 +262,41 @@ footer address{
   to{transform: scale(0,0)}
   
   
+}
+
+.flex-row-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.race-display{
+  display: flex;
+  justify-content: space-between;
+}
+
+.race-display h3{
+  cursor: pointer;
+}
+
+.race-info-box{
+  width: 80%;
+  min-height: 250px;
+  margin: 10px 0;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.race-info-box p{
+  padding-bottom: 10px;
+}
+
+.race-stats{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.trait-desc button{
+  margin-bottom: 5px;
 }
