@@ -206,6 +206,17 @@ footer address{
   color: #cc7a00;
 }
 
+button{
+  background: #cc7a00;
+  border: 3px outset  #ffb84d;
+}
+
+button:hover{
+  background: #b30059;
+  border: 3px outset  #ff4da6;
+  color: white;
+}
+
 .and-logo{
   background: url('./ddlogo.png');
   background-size: 50%;
@@ -229,6 +240,22 @@ footer address{
   flex-direction: column;
   justify-content: space-between;
 
+}
+
+.form-start{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./heros.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+}
+
+.form-start button{
+  width: 150px;
+  height: 30px;
+  
 }
 
 .form-active{
