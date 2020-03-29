@@ -164,7 +164,40 @@ const Creator = () =>{
                             {character.race? `You've Selected: ${character.race.name}` :""}
                                
                         </h3>
-                        {/* {character.race ?  setLimit(character.race.options.ability.choose): ""}  */}
+                        
+                        <div className="flex-box-row">
+                            <h3 className="orange">Languages:</h3>
+                            {character.race.languages.map((x,i)=>(
+                                <p key={i} className="margin-s-10">{x.name}</p>
+                            ))}
+                        </div>
+                        
+                        <div className="flex-box-row">
+                            <h3 className="orange">Ability Bonuses:</h3>
+                            {character.race.abilityBonus.map((x,i)=>(
+                                <p key={i} className="margin-s-10">{x.name} +{x.bonus}</p>
+                            ))}
+                        </div>
+
+                        {character.race.startProf.length === 0 ? "":
+                            <div className="flex-box-row">
+                                <h3 className="orange">Starting Proficiencies:</h3>
+                                {character.race.startProf.map((x,i)=>(
+                                    <p key={i} className="margin-s-10">{x.name}</p>
+                                ))}
+                            </div>
+                        
+                        }
+
+                        {character.race.traits.length === 0 ? "":
+                        <div className="flex-box-row">
+                            <h3 className="orange">Traits:</h3>
+                            {character.race.traits.map((x,i)=>(
+                                <p key={i} className="margin-s-10">{x.name}</p>
+                            ))}
+                        </div>
+                        }
+
                         <p className="center-text">Any race specific options will appear below.</p>
 
 
