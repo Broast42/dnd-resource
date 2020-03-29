@@ -133,6 +133,40 @@ const Creator = () =>{
         
     };
 
+    const raceOptionAbHandle = (e) => {
+        if(e.target.checked){
+            setCharacter({
+                ...character,
+                race: {
+                    ...character.race,
+                    selected_options:{
+                        ...character.race.selected_options,
+                        ability: {
+                        ...character.race.selected_options.ability,
+                        [e.target.name]: e.target.value 
+                        }
+                    }
+                }
+            })
+        }else{
+            setCharacter({
+                ...character,
+                race: {
+                    ...character.race,
+                    selected_options:{
+                        ...character.race.selected_options,
+                        ability: {
+                        ...character.race.selected_options.ability,
+                        [e.target.name]: "0" 
+                        }
+                    }
+                }
+            })
+
+        }
+        
+    };
+
     const raceOptionsClear = () => {
         setCharacter({
             ...character,
@@ -288,7 +322,7 @@ const Creator = () =>{
                                                         id={x.name}
                                                         name={x.name} 
                                                         value={x.bonus}
-                                                        onChange={(e)=>{abOption(e);}}
+                                                        onChange={(e)=>{abOption(e); raceOptionAbHandle(e) }}
                                                     />
                                                     <label htmlFor={x.name} >{x.name} +{x.bonus}</label>
                                                 </div>    
