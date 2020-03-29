@@ -27,12 +27,18 @@ const Creator = () =>{
                     ability: {},
                     prof: {},
                     traits: {}
+                },
+                selected_options:{
+                    language: [],
+                    ability: {},
+                    prof: [],
+                    traits: []
                 }
             },    
     }
 
     const [character, setCharacter] = useState(initalCharacter);
-    const [test, setTest] = useState({name:"",selections:[]});
+    //const [test, setTest] = useState({name:"",selections:[]});
 
     //race data hooks
     const [ raceList, setRaceList ] = useState([]);
@@ -40,7 +46,12 @@ const Creator = () =>{
     const [ infoLink, setInfoLink ] = useState("/api/races/dragonborn")
     const [ selectedRace, setSelectedRace] = useState({});
     //race options functonality hooks
-    const [setLimit, raceOptionHandle] = useCheckBox(1);
+    const [setLimit, raceOptionHandle] = useCheckBox(1);//test hook
+    const [setLangLimit, langOption] = useCheckBox(1);
+    const [setAbLimit, abOption] = useCheckBox(1);
+    const [setProfLimit, profOption] = useCheckBox(1);
+    const [setTraitsLimit, traitsOption] = useCheckBox(1);
+
 
 
     useEffect(()=>{
@@ -55,9 +66,13 @@ const Creator = () =>{
             });
     },[]);
 
+    //sets the limit of choices for race specific options
     useEffect(()=>{
-         setLimit(character.race.options.ability.choose);
-         console.log(character.race.options.ability.choose);
+        setLimit(character.race.options.ability.choose);//test
+        setLangLimit(character.race.options.language.choose);
+        setAbLimit(character.race.options.ability.choose);
+        setProfLimit(character.race.options.prof.choose);
+        setTraitsLimit(character.race.options.traits.choose); 
     },[character.race])
 
     
@@ -70,6 +85,7 @@ const Creator = () =>{
         setCharacter({
             ...character,
             race: {
+                ...character.race,
                 name: selectedRace.name,
                 languages: selectedRace.languages,
                 abilityBonus: selectedRace.ability_bonuses,
@@ -85,27 +101,58 @@ const Creator = () =>{
         })
     };
 
-    const optionHandle = (e) => {
+    
+    const raceOptionsHandle = (e) => {
         if(e.target.checked){
-            setTest({
-                ...test,
-                selections: [...test.selections, e.target.value]
+            const path = e.target.name;
+            setCharacter({
+                ...character,
+                    race: {
+                        ...character.race,
+                        selected_options: {
+                            ...character.race.selected_options, 
+                            [e.target.name]: [...character.race.selected_options[e.target.name], e.target.value]
+                    }
+                    
+                }
             })
         }else{
-            const newArr = test.selections.filter(x => x !== e.target.value);
-            setTest({
-                ...test,
-                selections: newArr
+            const newArr = character.race.selected_options[e.target.name].filter(x => x !== e.target.value);
+            setCharacter({
+                ...character,
+                race: {
+                    ...character.race,
+                    selected_options:{
+                        ...character.race.selected_options,
+                        [e.target.name] : newArr
+                    }
+                }
+                
             })
         }
         
-    }
+    };
+
+    const raceOptionsClear = () => {
+        setCharacter({
+            ...character,
+            race: {
+                ...character.race,
+                selected_options:{
+                    language: [],
+                    ability: {},
+                    prof: [],
+                    traits: []
+                }
+            }
+        })
+    };
 
     
 
     // console.log('selected', selectedRace);
-    console.log('added race', character.race);
-    console.log("test", test);
+    console.log('added race', character);
+    //console.log("test", test);
 
     return(
         <div className="and-logo">
@@ -198,21 +245,112 @@ const Creator = () =>{
                         </div>
                         }
 
-                        <p className="center-text">Any race specific options will appear below.</p>
+                        {character.race.options.language.from ||
+                        character.race.options.ability.from ||
+                        character.race.options.prof.from ||
+                        character.race.options.traits.from ?
+                            <div>
+                                <h3 className="red center-text">Select race specific options below.</h3>
+                                {character.race.options.language.from ? 
+                                    <div>
+                                        <h3 className="orange">
+                                            Select {character.race.options.language.choose} extra 
+                                            {character.race.options.language.choose > 1 ? " languages." : " language."}
+                                        </h3>
+                                        <div className="flex-checkbox">
+                                            {character.race.options.language.from.map((x,i) =>(
+                                                <div key={i} className="margin-a-10">
+                                                    <input 
+                                                        type="checkbox" 
+                                                        id={x.name}
+                                                        name="language" 
+                                                        value={x.name}
+                                                        onChange={(e)=>{langOption(e); raceOptionsHandle(e); }}
+                                                    />
+                                                    <label htmlFor={x.name} >{x.name}</label>
+                                                </div>    
+                                            )) }
+                                        </div> 
+                                    </div>    
+                                :""}
 
+                                {character.race.options.ability.from ? 
+                                    <div>
+                                        <h3 className="orange">
+                                            Select {character.race.options.ability.choose} extra 
+                                            {character.race.options.ability.choose > 1 ? " abilities." : " ability."}
+                                        </h3>
+                                        <div className="flex-checkbox">
+                                            {character.race.options.ability.from.map((x,i) =>(
+                                                <div key={i} className="margin-a-10">
+                                                    <input 
+                                                        type="checkbox" 
+                                                        id={x.name}
+                                                        name={x.name} 
+                                                        value={x.bonus}
+                                                        onChange={(e)=>{abOption(e);}}
+                                                    />
+                                                    <label htmlFor={x.name} >{x.name} +{x.bonus}</label>
+                                                </div>    
+                                            )) }
+                                        </div> 
+                                    </div>    
+                                :""}
+                            
+                                {character.race.options.prof.from ? 
+                                    <div>
+                                        <h3 className="orange">
+                                            Select {character.race.options.prof.choose} extra 
+                                            {character.race.options.prof.choose > 1 ? " proficiencies." : " proficiency."}
+                                        </h3>
+                                        <div className="flex-checkbox">
+                                            {character.race.options.prof.from.map((x,i) =>(
+                                                <div key={i} className="margin-a-10">
+                                                    <input 
+                                                        type="checkbox" 
+                                                        id={x.name}
+                                                        name="prof" 
+                                                        value={x.name}
+                                                        onChange={(e)=>{profOption(e); raceOptionsHandle(e);}}
+                                                    />
+                                                    <label htmlFor={x.name} >{x.name}</label>
+                                                </div>    
+                                            )) }
+                                        </div> 
+                                    </div>    
+                                :""}
 
-
-                        <input type="checkbox" id="1" value="selection1" onChange={(e)=>{raceOptionHandle(e); optionHandle(e)}} />
-                        <label htmlFor="1">selection 1</label>
-                        <input type="checkbox" id="2" value="selection2" onChange={(e)=>{raceOptionHandle(e); optionHandle(e)}} />
-                        <label htmlFor="2">selection 2</label>
-                        <input type="checkbox" id="3" value="selection3" onChange={(e)=>{raceOptionHandle(e); optionHandle(e)}} />
-                        <label htmlFor="3">selection 3</label>
-
-
+                                {character.race.options.traits.from ? 
+                                    <div>
+                                        <h3 className="orange">
+                                            Select {character.race.options.traits.choose} extra 
+                                            {character.race.options.traits.choose > 1 ? " traits." : " trait."}
+                                        </h3>
+                                        <div className="flex-checkbox">
+                                            {character.race.options.traits.from.map((x,i) =>(
+                                                <div key={i} className="margin-a-10">
+                                                    <input 
+                                                        type="checkbox"
+                                                        name="traits" 
+                                                        id={x.name} 
+                                                        value={x.name}
+                                                        onChange={(e)=>{traitsOption(e); raceOptionsHandle(e);}}
+                                                    />
+                                                    <label htmlFor={x.name} >{x.name}</label>
+                                                </div>    
+                                            )) }
+                                        </div> 
+                                    </div>    
+                                :""}
+                            
+                            </div>
+                           
+                            :<h3 className="red center-text">There are no race specific options. Confirm class by selecting next.</h3>
+                        }
+                 
                     </div>
                     <div className="flex-row-buttons">
-                        <button onClick={(e)=>{e.preventDefault(); raceBoxChange(); raceOptionBoxChange();}}>Back</button>
+                        <button onClick={(e)=>{e.preventDefault(); raceBoxChange(); raceOptionBoxChange(); raceOptionsClear();}}>Back</button>
                         <button onClick={(e)=>{e.preventDefault(); nameBoxChange(); raceOptionBoxChange()}}>Next</button>
                     </div>   
                 </div>

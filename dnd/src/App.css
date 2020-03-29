@@ -117,6 +117,11 @@ p {
   
 }
 
+.margin-a-10{
+  margin: 10px;
+  
+}
+
 header {
   height: 310px;
   width: 100%;
@@ -336,4 +341,15 @@ button:hover{
 
 .trait-desc button{
   margin-bottom: 5px;
+}
+
+label{
+  font-size: 1.5rem;
+}
+
+.flex-checkbox{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
