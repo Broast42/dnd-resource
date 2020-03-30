@@ -1,5 +1,4 @@
-import {ADD_NAME} from '../actions/index';
-
+import {ADD_NAME, ADD_PLAYER_NAME} from '../actions/index';
 
 const initalState = {
     data: "test",
@@ -7,6 +6,7 @@ const initalState = {
         
         slot1:{
             name: "",
+            player_name: "",
             race: {
                 name: "",
                 languages: [],
@@ -31,6 +31,7 @@ const initalState = {
     },
     currentCreation: {
         name: "",
+        player_name: "",
         race: {
             name: "",
             languages: [],
@@ -65,6 +66,14 @@ export const reducer = (state = initalState, action) => {
                     name: action.payload,
                 }
             }
+        case ADD_PLAYER_NAME:
+            return{
+                ...state,
+                currentCreation: {
+                ...state.currentCreation,
+                player_name: action.payload,
+            }
+        }
         
         default:
             return state;

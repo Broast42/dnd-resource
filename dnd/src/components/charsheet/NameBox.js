@@ -23,8 +23,8 @@ const NameBox = (props) => {
                 }
             </div>
             <p>Character Name</p>
-            <div className={`sheet-name-form ${nameView}`}>
-                    <button className="sheet-name-form-x" onClick={nameViewChange}>
+            <div className={`sheet-form sheet-name-form ${nameView}`}>
+                    <button className="sheet-form-x" onClick={nameViewChange}>
                         x
                     </button>
                     <div className="name-form-info">
