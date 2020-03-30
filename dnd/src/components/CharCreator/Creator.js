@@ -9,9 +9,9 @@ const Creator = () =>{
     //form view controll hooks
     const [start, startChange]= useChange("form-active")
     const [raceBox, raceBoxChange] = useChange("none");
-    const [nameBox, nameBoxChange] = useChange("none");
     const [raceOptionBox, raceOptionBoxChange] = useChange("none");
-
+    const [nameBox, nameBoxChange] = useChange("none");
+    
     //created character hooks
 
     const initalCharacter = {
@@ -52,6 +52,8 @@ const Creator = () =>{
     const [setProfLimit, profOption] = useCheckBox(1);
     const [setTraitsLimit, traitsOption] = useCheckBox(1);
 
+    //name placholder
+    const [characterName, setCharacterName] = useState("");
 
 
     useEffect(()=>{
@@ -182,9 +184,20 @@ const Creator = () =>{
         })
     };
 
+    const setNamePlaceholder = (e) => {
+        setCharacterName(e.target.value);
+    };
+
+    const addCharacterName = () => {
+        setCharacter({
+            ...character,
+            name: characterName
+        })
+    }
+
     
 
-    // console.log('selected', selectedRace);
+    console.log('name', characterName);
     console.log('added race', character);
     //console.log("test", test);
 
@@ -388,6 +401,27 @@ const Creator = () =>{
                         <button onClick={(e)=>{e.preventDefault(); nameBoxChange(); raceOptionBoxChange()}}>Next</button>
                     </div>   
                 </div>
+
+                <div className={`form-box ${nameBox}`}>
+                    <div>
+                        <h2 className="red center-text">
+                            Now let's give your character a name.
+                        </h2>
+                        <p>
+                            Any name will do but try and give your character a name that fits his/her race.
+                            If you're having troubles take a moment and look up some names.
+                            A good name can really enhance role-play experience.
+                        </p>
+                        <div className="center-text">
+                            <input type="text" className="input-width-300" name="name" onChange={setNamePlaceholder} />
+                        </div>
+                        
+                    </div>
+                    <div className="flex-row-buttons">
+                        <button onClick={(e)=> {e.preventDefault(); nameBoxChange(); raceOptionBoxChange(); }}>Back</button>
+                        <button onClick={(e)=> {e.preventDefault(); nameBoxChange(); addCharacterName(); }}>Next</button>
+                    </div>   
+                </div> 
                 
                 
                 <button type="submit">submit</button>

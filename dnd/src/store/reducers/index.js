@@ -1,6 +1,8 @@
+import {ADD_NAME} from '../actions/index';
+
 
 const initalState = {
-    data: "",
+    data: "test",
     createdChars: {
         
         slot1:{
@@ -16,9 +18,38 @@ const initalState = {
                     ability: {},
                     prof: {},
                     traits: {}
+                },
+                selected_options:{
+                    language: [],
+                    ability: {},
+                    prof: [],
+                    traits: []
                 }
             },
 
+        },
+    },
+    currentCreation: {
+        name: "",
+        race: {
+            name: "",
+            languages: [],
+            abilityBonus: [],
+            startProf: [],
+            traits:[],
+            options:{
+                language: {},
+                ability: {},
+                prof: {},
+                traits: {}
+            },
+            selected_options:{
+                language: [],
+                ability: {},
+                prof: [],
+                traits: []
+            }
+            
         },
     },
 
@@ -26,6 +57,14 @@ const initalState = {
 
 export const reducer = (state = initalState, action) => {
     switch (action.type) {
+        case ADD_NAME:
+            return{
+                ...state,
+                currentCreation: {
+                    ...state.currentCreation,
+                    name: action.payload,
+                }
+            }
         
         default:
             return state;
