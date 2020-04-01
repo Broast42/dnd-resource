@@ -6,6 +6,8 @@ import NameBox from './NameBox';
 import ClassBox from './ClassBox';
 import BackgroundBox from './BackgroundBox';
 import PlayerNameBox from './PlayerNameBox';
+import RaceBox from './RaceBox';
+import AlignmentBox from './AlignmentBox';
 
 const CharacterSheet = (props) => {
 
@@ -23,7 +25,7 @@ const CharacterSheet = (props) => {
                     <div className="char-info-flex">
                         <div className="char-info-deco"></div>
                         <div className="sheet-char-info">
-                            <div className="info-row">
+                            <div className="info-row space-between">
                                 <ClassBox/>
                                 <BackgroundBox/>
                                 <PlayerNameBox />
@@ -34,8 +36,9 @@ const CharacterSheet = (props) => {
                                 </div> */}
 
                             </div>
-                            <div className="info-row">
-
+                            <div className="info-row space-evenly">
+                                <RaceBox />
+                                <AlignmentBox />
                             </div>
 
                         </div>

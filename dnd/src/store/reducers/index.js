@@ -1,4 +1,4 @@
-import {ADD_NAME, ADD_PLAYER_NAME} from '../actions/index';
+import {ADD_NAME, ADD_PLAYER_NAME, ADD_RACE} from '../actions/index';
 
 const initalState = {
     data: "test",
@@ -13,20 +13,14 @@ const initalState = {
                 abilityBonus: [],
                 startProf: [],
                 traits:[],
-                options:{
-                    language: {},
-                    ability: {},
-                    prof: {},
-                    traits: {}
-                },
-                selected_options:{
-                    language: [],
-                    ability: {},
-                    prof: [],
-                    traits: []
-                }
-            },
 
+            },
+            race_options: {
+               language: [],
+                ability: [],
+                prof: [],
+                traits: [] 
+            }
         },
     },
     currentCreation: {
@@ -38,19 +32,13 @@ const initalState = {
             abilityBonus: [],
             startProf: [],
             traits:[],
-            options:{
-                language: {},
-                ability: {},
-                prof: {},
-                traits: {}
-            },
-            selected_options:{
-                language: [],
-                ability: {},
-                prof: [],
-                traits: []
-            }
-            
+
+        },
+        race_options: {
+            language: [],
+            ability: [],
+            prof: [],
+            traits: [] 
         },
     },
 
@@ -70,10 +58,19 @@ export const reducer = (state = initalState, action) => {
             return{
                 ...state,
                 currentCreation: {
-                ...state.currentCreation,
-                player_name: action.payload,
+                    ...state.currentCreation,
+                    player_name: action.payload,
+                }
             }
-        }
+        case ADD_RACE:
+            return{
+                ...state,
+                currentCreation: {
+                    ...state.currentCreation,
+                    race: action.payload.race, 
+                    race_options: action.payload.choices
+                }
+            }
         
         default:
             return state;

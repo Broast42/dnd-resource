@@ -18,6 +18,6 @@ export const useCheckBox = (i) =>{
         }
         
     };
-    return [setSelectLimit, handle];
+    return [setSelectLimit, handle, setSelectNum];
 
 };

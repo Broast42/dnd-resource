@@ -12,7 +12,7 @@ const NameBox = (props) => {
         setName(e.target.value);
     }
 
-    console.log('NameBox', props.data)
+    //console.log('NameBox', props.data)
 
     return(
         <div>
