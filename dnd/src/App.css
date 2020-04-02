@@ -130,7 +130,15 @@ p {
 }
 
 .input-width-300{
-  width: 30
+  width: 300px;
+}
+
+.half-width{
+  width: 50%;
+}
+
+.third-width{
+  width: 33%;
 }
 
 .self-right{
@@ -390,7 +398,7 @@ label{
 
 .character-sheet{
   width: 1000px;
-  min-height: 1200px;
+  min-height: 1300px;
   padding: 5px;
   margin: 10px auto;
   border: 1px solid grey;
@@ -653,9 +661,9 @@ label{
 }
 
 .class-form{
-  width: 500px;
+  width: 900px;
   min-height: 500px;
-  left: 300px;
+  left: 100px;
   top: 200px;
   flex-direction: column;
 }
@@ -668,6 +676,136 @@ label{
   
 }
 
+.class-details-box{
+  width:90%;
+  min-height: 500px;
+  margin: 10px auto;
+  border: 3px solid #b30059;
+  background: #d4ddf7;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.class-details-box p {
+  font-size: 1.4rem;
+  padding: 2px 0px;
+}
+
+/* .class-details-box h1{
+  margin: 10px 0px 0px 15px ;
+
+} */
+
+.sub-class{
+  margin-left: 30px;
+}
+
+.class-die{
+  display: block;
+  /* margin-top: 10px; */
+  font-size: 2.8rem;
+}
+
+.class-die-label{
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 8px;
+}
+
+.class-list-flex{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.class-list-items{
+  min-width: 100px;
+  margin: 5px 0px;
+  text-align: center;
+}
+
+.fine-print{
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 15px; 
+  font-size: 1.2rem;
+}
+
+.class-choices-flex{
+  display: flex;
+  flex-flow: row wrap;
+  /* align-items: center; */
+  height: 100px;
+}
+
+.class-choice-item{
+  /* width: 200px; */
+  margin: 5px auto;
+}
+
+
+.spell-show-button{
+  width: 150px;
+  margin: 10px;
+  background: lightgray;
+  border-color: gray;
+
+}
+
+.spell-show-button:hover{
+  background: lightblue;
+  border-color: aqua;
+  color:black;
+
+}
+
+.class-form-x{
+  position: relative;
+  width: 25px;
+  height: 25px;
+  left: 855px;
+  top: 10px
+  
+  
+}
+
+.class-top-banner{
+  width: 100%;
+  height: 80px;
+  padding: 0px 10px;
+  background: #595959;
+  border: 8px outset #8c8c8c;
+  /* margin-bottom: 15px; */
+
+}
+
+.top-banner-section{
+  width: 33%;
+  height: 60px;
+  padding: 0px 10px;
+  color: white;
+}  
+
+.saving-throw{
+  margin-top: 4px;
+}
+
+.class-info-box{
+  width: 100%;
+  min-height: 380px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  border-radius: 0 0 10px 10px;
+}
+
+.class-info-box-seperator{
+  border-bottom: 4px double #404040;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
 
   
 

@@ -16,7 +16,7 @@ const CharacterSheet = (props) => {
         <div className="character-sheet">
             <div className="sheet-top-row">
                 <div className="sheet-top-col">
-                    <img src={smallBanner} className="banner-sm" />
+                    <img src={smallBanner} className="banner-sm" alt="d&d"/>
                     <div className="sheet-name-div">
                         <NameBox />   
                     </div>    

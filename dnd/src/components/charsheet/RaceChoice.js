@@ -19,9 +19,8 @@ const RaceChoice = (props) => {
 
     const [race, setRace] = useState({});
     const [raceSelection, setRaceSelection] = useState(initalRace);
-    // const [options, setOptions] = useState(initalOption);
     
-    const [test, setTest] = useState([]);
+    
 
     //checkbox hooks
     const [setAbility, abilityOption, abilityNum] = useCheckBox(1);
@@ -41,13 +40,16 @@ const RaceChoice = (props) => {
             });
 
         
-        setOptions({language:[], ability: [], prof: [], triats: []});
+        setOptions({language:[], ability: [], prof: [], traits: []});
+        
         abilityNum(0);
         traitNum(0);
         profNum(0);
         langNum(0);
+        
+    
+    },[props.link, setOptions, abilityNum, traitNum, profNum, langNum]);
 
-    },[props.link]);
 
     useEffect(()=>{
         if(race.ability_bonus_options){
@@ -68,21 +70,9 @@ const RaceChoice = (props) => {
             traits:race.traits,  
         })
                  
-    },[race]);
+    },[race, setAbility, setTrait, setProf, setLang]);
 
-    const testHand = e => {
-        setTest([
-            ...test,
-            {
-            name: e.target.alt,
-            url: e.target.id,
-            bonus: e.target.value   
-            }
-
-            ]
-            );
-    };
-
+    
     const choiceHandle = e => {
         if(e.target.alt === "ability" && e.target.checked){
             setOptions({

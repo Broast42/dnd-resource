@@ -23,7 +23,7 @@ const ClassBox = (props) => {
 
     },[])
 
-    console.log("classbox", classSelection);
+    //console.log("classbox", classSelection);
 
     return(
         <div>
@@ -32,7 +32,7 @@ const ClassBox = (props) => {
                 <p className="info-cat">Class</p>
             </div>
             <div className={`sheet-form class-form ${classView}`}>
-                <button className="sheet-form-x" onClick={classViewChange}>
+                <button className="class-form-x" onClick={classViewChange}>
                     x
                 </button>
                 <h3 className="class-form-heading">Select a Class to see its details.</h3>

@@ -11,7 +11,7 @@ const RaceDetails = (props) => {
             .then(res =>{
                 //console.log(res);
                 setRace(res.data);
-                //props.setRace(res.data);
+                
             })
             .catch(err=>{
                 console.log(err);
