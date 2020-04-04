@@ -8,7 +8,7 @@ const Header = () => {
             <img src={Banner} alt="DnD logo"/>
             <nav>
                 <NavLink exact to="/">Home</NavLink>
-                <NavLink to="/create">Character Creator</NavLink>
+                
                 <NavLink to="/sheet">Character Sheet</NavLink>
             </nav>
         </header>

@@ -1,4 +1,4 @@
-import {ADD_NAME, ADD_PLAYER_NAME, ADD_RACE} from '../actions/index';
+import {ADD_NAME, ADD_PLAYER_NAME, ADD_RACE, ADD_CLASS} from '../actions/index';
 
 const initalState = {
     data: "test",
@@ -87,7 +87,13 @@ export const reducer = (state = initalState, action) => {
                     race_options: action.payload.choices
                 }
             }
-        
+        case ADD_CLASS:
+            return{
+                ...state,
+                class: action.payload.userclass,
+                proficiency_choices: action.payload.prof,
+                equipment_options: action.payload.equip,
+            }
         default:
             return state;
     }

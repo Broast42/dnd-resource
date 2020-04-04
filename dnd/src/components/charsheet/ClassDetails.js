@@ -1,5 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect ,useReducer} from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { addClass } from '../../store/actions/index';
 import  ClassChoice from './ClassChoice';
 import ClassSpell from './ClassSpell';
 import ClassEquip from './ClassEquip';
@@ -29,6 +31,48 @@ const ClassDetails = (props) => {
         starting_equipment: [],
     }
 
+    const equipToStateInital = {
+        option_1:[],
+        option_2:[],
+        option_3:[],
+        option_4:[],
+        option_5:[],
+    }
+
+    //useReducer reducer
+    
+    function equipReducer(state, action) {
+        switch (action.type) {
+            case 'ch_1':
+                return{
+                    ...state,
+                    option_1: action.payload
+                }
+            case 'ch_2':
+                return{
+                    ...state,
+                    option_2: action.payload
+            }
+            case 'ch_3':
+                return{
+                    ...state,
+                    option_3: action.payload
+                }
+            case 'ch_4':
+                return{
+                    ...state,
+                    option_4: action.payload
+            }
+            case 'ch_5':
+                return{
+                    ...state,
+                    option_5: action.payload
+                }
+            default: 
+                return state;
+        }
+    }
+
     //user inquery hook
     const [selection, setSelection] = useState(initial);
 
@@ -36,6 +80,7 @@ const ClassDetails = (props) => {
 
     const [userClass, setUserClass] = useState(raceToStateInital);
     const [profChoices, setProfChoices] = useState([]);
+    const [equipmentChoices, ecDispatch] = useReducer(equipReducer, equipToStateInital);
 
     useEffect(() => {
         axios
@@ -43,7 +88,7 @@ const ClassDetails = (props) => {
             .then(res =>{
                 //console.log(res);
                 setSelection(res.data);
-                //props.setRace(res.data);
+            
             })
             .catch(err=>{
                 console.log(err);
@@ -62,8 +107,9 @@ const ClassDetails = (props) => {
         })
     },[selection]);
 
-    console.log("racedetails", selection);
-    console.log("user", userClass);
+    // console.log("racedetails", selection);
+     console.log("user", props.data);
+    // console.log('equip', equipmentChoices);
 
     return(
         <div className="class-details-box">
@@ -105,7 +151,10 @@ const ClassDetails = (props) => {
                 }
 
                 <div className="class-info-box-seperator">
-                    <ClassEquip link={selection.starting_equipment.url} />
+                    <ClassEquip 
+                        link={selection.starting_equipment.url} 
+                        equipmentChoices ={ecDispatch} 
+                    />
                 </div>
 
                 <div >
@@ -118,7 +167,7 @@ const ClassDetails = (props) => {
                         ))}
                     </div>
 
-                    <div className="">
+                    <div className="class-info-box-seperator">
                         {selection.proficiency_choices.map((x,i) => (
                             <div key={i} className="">
                                 <p className="center-text grey">
@@ -137,10 +186,10 @@ const ClassDetails = (props) => {
                     </div>
                 </div>
                 
-
-
-                
-                
+                <div className="center-text ">
+                    <p className="red margin-a-10">*Be sure to make all selections before selecting class*</p>
+                    <button className="class-btn" onClick={() => props.addClass(userClass, profChoices, equipmentChoices)}>Select this Class</button>
+                </div>
                 
                 <div className="fine-print">
                     *Api supplies only 1 subclass. Your character assumes this subclass by default
@@ -150,4 +199,10 @@ const ClassDetails = (props) => {
     );
 };
 
-export default ClassDetails;
+const mapStateToProps = state => {
+    return {
+        data:state
+    }
+}
+
+export default connect(mapStateToProps, {addClass})(ClassDetails);

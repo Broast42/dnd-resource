@@ -48,17 +48,43 @@ const ClassEquip = (props) => {
                 <h4 className="center-text grey">Equipment Choices</h4>
                 <p className="center-text grey">Sellect 1 option in each section</p>
                 <p className="center-text grey">Make optional selections before pressing selection button</p>
-                <EquipChoice equip={equip.choice_1} reset={props.link} name="ch_1"/>
-                <EquipChoice equip={equip.choice_2} reset={props.link} name="ch_2"/>
+                <EquipChoice 
+                    equip={equip.choice_1} 
+                    reset={props.link} 
+                    name="ch_1"
+                    equipmentChoices={props.equipmentChoices} 
+                />
+
+                <EquipChoice 
+                    equip={equip.choice_2} 
+                    reset={props.link} 
+                    name="ch_2"
+                    equipmentChoices={props.equipmentChoices} 
+                />
                 
                 {equip.choice_3 === undefined ? "" : 
-                <EquipChoice equip={equip.choice_3} reset={props.link} name="ch_3" />}
+                <EquipChoice 
+                    equip={equip.choice_3} 
+                    reset={props.link} 
+                    name="ch_3"
+                    equipmentChoices={props.equipmentChoices}  
+                />}
                 
                 {equip.choice_4 === undefined ? "" : 
-                <EquipChoice equip={equip.choice_4} reset={props.link} name="ch_4"/>}
+                <EquipChoice 
+                    equip={equip.choice_4} 
+                    reset={props.link} 
+                    name="ch_4"
+                    equipmentChoices={props.equipmentChoices} 
+                />}
 
                 {equip.choice_5 === undefined ? "" : 
-                <EquipChoice equip={equip.choice_5} reset={props.link} name="ch_4"/>}
+                <EquipChoice 
+                    equip={equip.choice_5} 
+                    reset={props.link} 
+                    name="ch_5"
+                    equipmentChoices={props.equipmentChoices} 
+                />}
             </div>
             
         </div>

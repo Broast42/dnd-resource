@@ -1,26 +1,26 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 
 const MultiOptions = (props) => {
 
-    const [equipSelect, setEquipSelect] = useState([]);
+    const [selectionIndex, setSelectionIndex] = useState("");
+    const [selection, setSelection] = useState([]);
 
-    const addEquip = (e) => {
-        setEquipSelect([
-            ...equipSelect,
-            {name: e.target.value, url: e.target.name, quantity: e.target.alt }
-        ])
-    };
 
-    console.log(`${props.name}`, equipSelect);
+    useEffect(() =>{
+        setSelection([props.x.from[selectionIndex]]);
+    },[selectionIndex, props.x.from]);
+
+
+    //console.log(`Mo selected ${props.name}`, selection);
 
     return(
         <div className="equip-flex">                 
-            <div className={`equip-btn  ${props.name}`}  onClick={(e) => {props.selectHandel(e, props.name); }}></div>
+            <div className={`equip-btn  ${props.name}`}  onClick={(e) => {props.selectHandel(e, props.name); props.choice(selection)}}></div>
             <div className="equip-width center-text">
-                <select  onChange={(e) =>{addEquip(e); }}>
-                    <option value="">Choose 1</option>
+                <select onChange={(e) =>{setSelectionIndex(e.target.value); }}>
+                    <option value="" >Choose 1</option>
                     {props.x.from.map((y,n) =>(
-                        <option key={n} alt={y.quantity} value={y.item.name} name={y.item.url}>
+                        <option key={n}  value={n}>
                             {y.item.name} x{y.quantity}
                         </option>
                     ))}
