@@ -5,6 +5,8 @@ const ClassChoice = (props) => {
 
     const [ setMaxLimit, maxHandle, setNum] = useCheckBox(1);
 
+    const [profChoices, setProfChoices] = props.profChoices;
+
     const clearCheck = () => {
         const inputs = document.querySelectorAll('.checkbox');
         inputs.forEach(x => {
@@ -12,33 +14,37 @@ const ClassChoice = (props) => {
         })
     };
 
+    const addProfChoices = (e) => {
+        setProfChoices([
+            ...profChoices,
+            {name: e.target.name, url: e.target.value},
+        ]);
+    };
+
     useEffect(() => {
         setMaxLimit(props.choose);
-        
+        setProfChoices([]);
         clearCheck();
-
-    },[props.selection, props.choose, setMaxLimit]);
-
-    useEffect(() => {
         setNum(0)
-    },[props.selection, setNum]);
+    },[props.selection, props.choose, setMaxLimit, setNum, setProfChoices]);
+
 
     return(
         <div className="class-choices-flex">
                             
             {props.from.map((x,i) => (
                 <div key={i} className="class-choice-item">
-                    <div>
-                        <input
-                            type="checkbox"
-                            className="checkbox"
-                            id={x.name}
-                            name={x.name}
-                            value={x.url}
-                            onChange={(e)=>{maxHandle(e); }}               
-                            />
-                        <label htmlFor={x.name}>{x.name}</label>
-                    </div>
+                    
+                    <input
+                        type="checkbox"
+                        className="checkbox"
+                        id={x.name}
+                        name={x.name}
+                        value={x.url}
+                        onChange={(e)=>{maxHandle(e); addProfChoices(e);}}               
+                        />
+                    <label htmlFor={x.name}>{x.name}</label>
+                
                 </div>
             ))}
         </div> 

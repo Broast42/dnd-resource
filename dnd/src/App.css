@@ -312,7 +312,7 @@ button:hover{
 /* form pop in out animation --may not need or change as needed */
 
 .form-active{
-  display: flex;
+  display: block;
   animation-name: popin;
   animation-duration: 1s;
 }
@@ -732,15 +732,17 @@ label{
 }
 
 .class-choices-flex{
+  width: 100%;
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
+  
   /* align-items: center; */
-  height: 100px;
+  /* height: 100px; */
 }
 
 .class-choice-item{
-  /* width: 200px; */
   margin: 5px auto;
+
 }
 
 
@@ -807,5 +809,70 @@ label{
   margin-bottom: 10px;
 }
 
+.equip-choice-flex{
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px dashed #404040;
+
+}
+
+.equip-choice{
+  display: flex;
+  align-items: center;
+  width: 30%;
+  background: #8c8c8c;
+  border: 2px solid #cc7a00;
+  border-radius: 8px;
+  padding: 5px;
+  color:white;
+  box-shadow: 2px 3px 3px gray;
   
+}
+
+.equip-flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+.equip-btn{
+  width: 30px;
+  height: 30px; 
+  border: 1px solid black;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 2px 3px 2px #404040;
+
+}
+
+.equip-btn:hover{
+  background: green;
+  
+}
+
+.equip-selected{
+  background: green;
+  box-shadow: none;
+}
+
+.equip-checkbox-container{
+  display: block;
+  width: 125px; 
+  margin: 0px auto;
+}
+
+.equip-checkbox{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.equip-width{
+  width: 170px;
+  
+}
+
+
 

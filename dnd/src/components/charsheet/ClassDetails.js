@@ -20,7 +20,22 @@ const ClassDetails = (props) => {
 
     }
 
+    const raceToStateInital = {
+        name:"",
+        hit_die: "",
+        subclasses:[],
+        proficiencies: [],
+        saving_throws: [],
+        starting_equipment: [],
+    }
+
+    //user inquery hook
     const [selection, setSelection] = useState(initial);
+
+    //state to be saved hooks
+
+    const [userClass, setUserClass] = useState(raceToStateInital);
+    const [profChoices, setProfChoices] = useState([]);
 
     useEffect(() => {
         axios
@@ -33,10 +48,22 @@ const ClassDetails = (props) => {
             .catch(err=>{
                 console.log(err);
             })
+            
     },[props.selection])
 
+    useEffect(()=>{
+        setUserClass({
+            name: selection.name,
+            hit_die: selection.hit_die,
+            subclasses: selection.subclasses,
+            proficiencies: selection.proficiencies,
+            saving_throws: selection.saving_throws,
+            starting_equipment: selection.starting_equipment,
+        })
+    },[selection]);
+
     console.log("racedetails", selection);
-    
+    console.log("user", userClass);
 
     return(
         <div className="class-details-box">
@@ -77,11 +104,11 @@ const ClassDetails = (props) => {
                     <ClassSpell link={selection.spellcasting.url}/>
                 }
 
-                <div>
+                <div className="class-info-box-seperator">
                     <ClassEquip link={selection.starting_equipment.url} />
                 </div>
 
-                <div className="class-info-box-seperator">
+                <div >
                     <h3 className="center-text orange">Proficiencies</h3>
                     <div className="class-list-flex">
                         {selection.proficiencies.map((x,i) => (
@@ -98,7 +125,12 @@ const ClassDetails = (props) => {
                                     Choose {x.choose}
                                 </p>
                                 
-                                <ClassChoice from={x.from} choose={x.choose} selection={selection} />
+                                <ClassChoice 
+                                    from={x.from} 
+                                    choose={x.choose} 
+                                    selection={selection}
+                                    profChoices={[profChoices, setProfChoices]} 
+                                />
                                 
                             </div>
                         ))}

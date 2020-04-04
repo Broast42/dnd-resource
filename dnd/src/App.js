@@ -6,7 +6,6 @@ import { Route } from 'react-router-dom';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import Footer from './components/Footer';
-import Creator from './components/charcreator/Creator';
 import CharacterSheet from './components/charsheet/CharacterSheet';
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
       <Header />
       
       <Route exact path="/" component={HomePage} />
-      <Route path="/create" component={Creator} />
+      
       <Route path="/sheet" component={CharacterSheet} />
 
       <Footer />

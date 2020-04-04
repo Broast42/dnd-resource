@@ -40,6 +40,22 @@ const initalState = {
             prof: [],
             traits: [] 
         },
+        class:{
+            name:"",
+            hit_die: "",
+            subclasses:[],
+            proficiencies: [],
+            saving_throws: [],
+            starting_equipment: [],    
+        },
+        proficiency_choices:[],
+        equipment_options:{
+            option_1:[],
+            option_2:[],
+            option_3:[],
+            option_4:[],
+            option_5:[],
+        }
     },
 
 }
