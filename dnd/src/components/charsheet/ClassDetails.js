@@ -73,14 +73,32 @@ const ClassDetails = (props) => {
         }
     }
 
+    function startReducer(state,action){
+        switch (action.type) {
+            case 'START_EQUIP':
+                return[
+                    ...state,
+                    action.payload
+                ]
+            case 'REMOVE_EQUIP':
+                return action.payload;
+            default:
+                return state;
+        }
+    }
+
     //user inquery hook
     const [selection, setSelection] = useState(initial);
 
     //state to be saved hooks
-
     const [userClass, setUserClass] = useState(raceToStateInital);
     const [profChoices, setProfChoices] = useState([]);
     const [equipmentChoices, ecDispatch] = useReducer(equipReducer, equipToStateInital);
+
+    //starting equipment
+    const startInital = [];
+    const [startEquip, startDispatch] = useReducer(startReducer, startInital);
+    
 
     useEffect(() => {
         axios
@@ -88,7 +106,7 @@ const ClassDetails = (props) => {
             .then(res =>{
                 //console.log(res);
                 setSelection(res.data);
-            
+                startDispatch({type: 'REMOVE_EQUIP', payload: []})
             })
             .catch(err=>{
                 console.log(err);
@@ -103,12 +121,13 @@ const ClassDetails = (props) => {
             subclasses: selection.subclasses,
             proficiencies: selection.proficiencies,
             saving_throws: selection.saving_throws,
-            starting_equipment: selection.starting_equipment,
+            starting_equipment: startEquip,
+            levels: selection.class_levels,
         })
-    },[selection]);
+    },[selection, startEquip]);
 
-    // console.log("racedetails", selection);
-     console.log("user", props.data);
+    //console.log("racedetails", selection);
+    // console.log("user", props.data);
     // console.log('equip', equipmentChoices);
 
     return(
@@ -152,7 +171,9 @@ const ClassDetails = (props) => {
 
                 <div className="class-info-box-seperator">
                     <ClassEquip 
-                        link={selection.starting_equipment.url} 
+                        link={selection.starting_equipment.url}
+                        startDispatch={startDispatch}
+                        selection={selection} 
                         equipmentChoices ={ecDispatch} 
                     />
                 </div>
@@ -188,7 +209,7 @@ const ClassDetails = (props) => {
                 
                 <div className="center-text ">
                     <p className="red margin-a-10">*Be sure to make all selections before selecting class*</p>
-                    <button className="class-btn" onClick={() => props.addClass(userClass, profChoices, equipmentChoices)}>Select this Class</button>
+                    <button className="class-btn" onClick={() => {props.addClass(userClass, profChoices, equipmentChoices); props.changeView();}}>Select this Class</button>
                 </div>
                 
                 <div className="fine-print">
@@ -201,7 +222,8 @@ const ClassDetails = (props) => {
 
 const mapStateToProps = state => {
     return {
-        data:state
+        data:state,
+        
     }
 }
 

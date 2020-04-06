@@ -108,6 +108,10 @@ p {
   color: grey;
 }
 
+.white{
+  color: white;
+}
+
 .padding5{
   padding: 5px;
 }
@@ -453,8 +457,9 @@ label{
 
 .sheet-name-form{
   bottom: 10px;
-  width: 500px;
+  width: 510px;
   height: 500px;
+  padding-left: 10px;
 }
 
 .sheet-form-x{
@@ -564,19 +569,19 @@ label{
 }
 
 .player-name{
-  margin-top: 50px;
+  margin-top: 30px;
   width: 100%;
   text-align: center;
   
 }
 
 .player-name input{
-  margin: 20px;
+  margin: 20px 20px 20px 0px;
   width: 250px;
 }
 
 .player-name-submit{
-  width: 200px;
+  width: 180px;
 
 }
 
@@ -878,6 +883,73 @@ label{
   width: 300px;
   height: 30px;
   margin: 10px;
+
+}
+
+.alignment-form{
+  width: 700px;
+  min-height: 500px;
+  left: 100px;
+  top: 200px;
+  flex-direction: column;
+}
+
+.alignment-form-x{
+  position: relative;
+  width: 25px;
+  height: 25px;
+  left: 652px;
+  top: 10px
+  
+  
+}
+
+.alignment-details{
+  width: 510px;
+  height: 520px;
+  margin: 20px auto 20px auto;
+  background: linear-gradient(to bottom right, #ffffff 30%, #000000 70%);
+  border: 4px solid #b30059;
+}
+
+.alignment-box{
+  width: 99%;
+  min-height: 500px;
+  padding: 4px;
+  margin: 0px auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  
+  /* border: 1px solid gray; */
+}
+
+.align-item-box{
+  width: 33%;
+  height: 167px;
+  border: 1px solid black;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.align-label{
+  width: 120px;
+  margin: 0 auto;
+  background: #ffb84d;
+  border: 2px solid black;
+  border-radius: 25px;
+}
+
+.align-desc{
+  width: 90%;
+  font-size: 1.5rem;
+  margin: 5px auto 0px auto;
+  
+}
+
+.align-selected{
+  border: 4px solid green;
 
 }
 

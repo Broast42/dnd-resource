@@ -1,4 +1,4 @@
-import {ADD_NAME, ADD_PLAYER_NAME, ADD_RACE, ADD_CLASS} from '../actions/index';
+import {ADD_NAME, ADD_PLAYER_NAME, ADD_RACE, ADD_CLASS, ADD_ALIGN} from '../actions/index';
 
 const initalState = {
     data: "test",
@@ -46,7 +46,8 @@ const initalState = {
             subclasses:[],
             proficiencies: [],
             saving_throws: [],
-            starting_equipment: [],    
+            starting_equipment: [],
+            levels: {},    
         },
         proficiency_choices:[],
         equipment_options:{
@@ -55,7 +56,8 @@ const initalState = {
             option_3:[],
             option_4:[],
             option_5:[],
-        }
+        },
+        alignment: "",
     },
 
 }
@@ -90,9 +92,20 @@ export const reducer = (state = initalState, action) => {
         case ADD_CLASS:
             return{
                 ...state,
-                class: action.payload.userclass,
-                proficiency_choices: action.payload.prof,
-                equipment_options: action.payload.equip,
+                currentCreation: {
+                    ...state.currentCreation,
+                    class: action.payload.userclass,
+                    proficiency_choices: action.payload.prof,
+                    equipment_options: action.payload.equip,
+                }    
+            }
+        case ADD_ALIGN:
+            return{
+                ...state,
+                currentCreation: {
+                    ...state.currentCreation,
+                    alignment: action.payload,
+                }
             }
         default:
             return state;

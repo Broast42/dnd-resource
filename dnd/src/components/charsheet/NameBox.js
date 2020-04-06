@@ -42,7 +42,7 @@ const NameBox = (props) => {
                             You can always come back to change it later.
                         </p>
                         <div className="name-form-input">
-                            <input type="text" onChange={nameHandle}/>
+                            <input type="text"   onChange={nameHandle}/>
                             <button className="name-form-submit" onClick={() => {props.addName(name); nameViewChange();}}>
                                 Add Name
                             </button>

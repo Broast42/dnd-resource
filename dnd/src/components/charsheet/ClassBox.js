@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useChange } from '../../hooks/useChange'
+import { connect } from 'react-redux';
 import axios from 'axios';
 import ClassDetails  from './ClassDetails';
 
@@ -28,7 +29,10 @@ const ClassBox = (props) => {
     return(
         <div>
             <div className="info-box" onClick={classViewChange}>
-                <p className="info-data">test</p>
+                {props.className === '' ? <p className="info-data grey">Add a Class</p> :
+                <p className="info-data">{props.className}</p>
+                }
+                
                 <p className="info-cat">Class</p>
             </div>
             <div className={`sheet-form class-form ${classView}`}>
@@ -46,7 +50,7 @@ const ClassBox = (props) => {
                     ))}   
                 </div>
                 <div>
-                    <ClassDetails selection={classSelection}/>
+                    <ClassDetails selection={classSelection} changeView={classViewChange}/>
                 </div>
 
 
@@ -56,4 +60,10 @@ const ClassBox = (props) => {
     );
 };
 
-export default ClassBox;
+const mapStateToProps = state => {
+    return{
+        className: state.currentCreation.class.name,
+    }
+}
+
+export default connect(mapStateToProps)(ClassBox);

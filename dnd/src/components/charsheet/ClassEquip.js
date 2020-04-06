@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import EquipChoice from './EquipChoice';
+import StartEquip from './StartEquip';
 
 const ClassEquip = (props) => {
 
@@ -40,7 +41,15 @@ const ClassEquip = (props) => {
             <h3 className="center-text orange">Equipment</h3>
             <div className="class-list-flex">
                 {equip.starting_equipment.map((x,i) => (
-                    <p key={i} className="class-list-item">{x.quantity}x {x.item.name}</p>
+                    <div key={i}>
+                        <StartEquip 
+                            x={x} 
+                            startDispatch={props.startDispatch} 
+                            selection={props.selection}
+                            
+                        />
+                    </div>
+                    // <p key={i} className="class-list-item">{x.quantity}x {x.item.name}</p>
                 ))}
             </div>
             
