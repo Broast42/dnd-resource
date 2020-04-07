@@ -147,7 +147,7 @@ export const backgrounds = [
                 quantity: 5
             },
             {
-                name: "vestments",
+                name: "Vestments",
                 quantity: 1
             },
             {
@@ -155,7 +155,7 @@ export const backgrounds = [
                 quantity: 1
             },
             {
-                name: "pouch",
+                name: "Pouch",
                 quantity: 1
             }
         ],
@@ -163,10 +163,12 @@ export const backgrounds = [
             choose: 1,
             from: [
                 {
-                    name: "Prayer book"
+                    name: "Prayer book",
+                    quantity: 1
                 },
                 {
-                    name: "Prayer wheel"
+                    name: "Prayer wheel",
+                    quantity: 1
                 },
             ],
         },
@@ -181,7 +183,7 @@ export const backgrounds = [
             name: "Shelter of the Faithful",
             desc: "You and your companions can expect to recieve free healing and care at a temple, shrine, or other established presence of your faith. "
         },
-        chararacteristics:{
+        
             personality_trait: [ 
                 "I idolize a particular hero of my faith, and constantly refer to that person's deeds and example",
                 "I can find common ground between the fericest enimies, empathizing with them and always working towards peace",
@@ -234,7 +236,7 @@ export const backgrounds = [
                 "I am suspicious of strangers.",
                 "Once I pick a goal, I become obsessed with it to the detriment of everything else in my life."
             ]
-        }
+        
 
     },
     {
@@ -254,7 +256,7 @@ export const backgrounds = [
                 url: "/api/equipment/thieves-tools",
             }
         ],
-        tool_choices:[
+        tool_choices:
             {
                 choose: 1,
                 from:[
@@ -268,7 +270,7 @@ export const backgrounds = [
                     }
                 ]
             },
-        ],
+        
         equipment: [
             {
                 name: "Crowbar",
@@ -289,7 +291,7 @@ export const backgrounds = [
                 amount: 15,
             }
         ],
-        criminal_specialty: [
+        specialty: [
             "Blackmailer",
             "Burglar",
             "Enforcer",
@@ -389,48 +391,58 @@ export const backgrounds = [
             },
             
         ],
-        equipment_choices:{
+        equipment_choice:{
             choose: 1,
             from:[
                 {
                     url: "/api/equipment/bagpipes",
-                    name: "Bagpipes"
+                    name: "Bagpipes",
+                    quantity: 1
                 },
                 {
                     url: "/api/equipment/drum",
-                    name: "Drum"
+                    name: "Drum",
+                    quantity: 1
                 },
                 {
                     url: "/api/equipment/dulcimer",
-                    name: "Dulcimer"
+                    name: "Dulcimer",
+                    quantity: 1
                 },
                 {
                     url: "/api/equipment/flute",
-                    name: "Flute"
+                    name: "Flute",
+                    quantity: 1
                 },
                 {
                     url: "/api/equipment/lute",
-                    name: "Lute"
+                    name: "Lute",
+                    quantity: 1
                 },
                 {
                     url: "/api/equipment/lyre",
-                    name: "Lyre"
+                    name: "Lyre",
+                    quantity: 1
                 },
                 {
                     url: "/api/equipment/horn",
-                    name: "Horn"
+                    name: "Horn",
+                    quantity: 1
                 },
                 {
                     url: "/api/equipment/pan-flute",
-                    name: "Pan flute"
+                    name: "Pan flute",
+                    quantity: 1
                 },
                 {
                     url: "/api/equipment/shawm",
-                    name: "Shawm"
+                    name: "Shawm",
+                    quantity: 1
                 },
                 {
                     url: "/api/equipment/viol",
-                    name: "Viol"
+                    name: "Viol",
+                    quantity: 1
                 }
             ]
         },
@@ -606,6 +618,34 @@ export const backgrounds = [
             ] 
         
         },
+        equipment:[
+            {
+                name: "Bottle of Black Ink",
+                quantity: 1
+            },
+            {
+                name: "Quill",
+                quantity: 1
+            },
+            {
+                name: "Common Clothes",
+                quantity: 1
+            },
+            {
+                name: "Letter",
+                quantity: 1
+            },
+            {
+                name: "Pouch",
+                quantity: 1
+            }
+        ],
+        money:[
+            {
+                type:"Gp",
+                amount: 10,
+            }
+        ],
         specialty:[
             "Alchemist",
             "Astronomer",
@@ -689,7 +729,7 @@ export const backgrounds = [
                 name: "vehicles (land)",
             }
         ],
-        tool_choices:[
+        tool_choices:
             {
                 choose: 1,
                 from:[
@@ -702,8 +742,8 @@ export const backgrounds = [
                         url: "/api/equipment/playing-card-set",    
                     }
                 ]
-            }
-        ],
+            },
+        
         equipment:[
             {
                 name: "Insignia of Rank",
@@ -718,7 +758,7 @@ export const backgrounds = [
                 quantity: 1
             }
         ],
-        equipment_choices:[
+        equipment_choice:
             {
                 choose: 1,
                 from: [
@@ -732,6 +772,11 @@ export const backgrounds = [
                     }
 
                 ]
+            },
+        money:[
+            {
+                type: "Gp",
+                amount: 10
             }
         ],
         specialty: [

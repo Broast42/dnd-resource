@@ -4,6 +4,7 @@ export const ADD_PLAYER_NAME = 'ADD_PLAYER_NAME';
 export const ADD_RACE = 'ADD_RACE';
 export const ADD_CLASS = 'ADD_CLASS';
 export const ADD_ALIGN = 'ADD_ALIGN';
+export const ADD_BG = 'ADD_BG';
 
 export const addName = (name) => dispatch => {
     dispatch({type: ADD_NAME, payload: name})
@@ -23,4 +24,18 @@ export const addClass = (userclass, prof_choices, equip_choices) => dispatch =>{
 
 export const addAlign = (alignment) => dispatch =>{
     dispatch({type: ADD_ALIGN, payload: alignment});
+};
+
+export const addBg = (background, tool, equip, specialty, language) => dispatch =>{
+    dispatch(
+        {
+            type: ADD_BG, 
+            payload:{
+                background: background, 
+                tool: tool, 
+                equip: equip, 
+                specialty: specialty,
+                language: language,
+            }
+        })
 };

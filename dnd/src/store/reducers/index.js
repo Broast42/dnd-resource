@@ -1,4 +1,4 @@
-import {ADD_NAME, ADD_PLAYER_NAME, ADD_RACE, ADD_CLASS, ADD_ALIGN} from '../actions/index';
+import {ADD_NAME, ADD_PLAYER_NAME, ADD_RACE, ADD_CLASS, ADD_ALIGN, ADD_BG} from '../actions/index';
 
 const initalState = {
     data: "test",
@@ -58,6 +58,24 @@ const initalState = {
             option_5:[],
         },
         alignment: "",
+        background:{
+            name:"",
+            skill_prof: [],
+            tool_prof:[],
+            equipment:[],
+            money:[],
+            feature: {},
+            trait_options:[],
+            ideal_options:[],
+            bond_options: [],
+            flaw_options: [] 
+        },
+        background_choices:{
+            tool: {},
+            equip: "",
+            specialty: "",
+            language: {}
+        }
     },
 
 }
@@ -105,6 +123,21 @@ export const reducer = (state = initalState, action) => {
                 currentCreation: {
                     ...state.currentCreation,
                     alignment: action.payload,
+                }
+            }
+        case ADD_BG:
+            return{
+                ...state,
+                currentCreation: {
+                    ...state.currentCreation,
+                    background: action.payload.background,
+                    background_choices:{
+                        tool: action.payload.tool,
+                        equip: action.payload.equip,
+                        specialty: action.payload.specialty,
+                        language: action.payload.language,
+                    }
+
                 }
             }
         default:

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import { useChange } from '../../hooks/useChange';
-import { alignment, backgrounds } from '../../data';
+import { alignment } from '../../data';
 import AlignmentItems from './AlignmentItems';
 import { addAlign } from '../../store/actions/index';
 
@@ -9,7 +9,7 @@ const AlignmentBox = (props) => {
     const [alignView, alignViewChange] = useChange('none');
 
     const [selectedItem, setSelectedItem] = useState('');
-    console.log(alignment, backgrounds);
+    //console.log(alignment, backgrounds);
     return(
         <div>
             <div className="info-box" onClick={alignViewChange}>

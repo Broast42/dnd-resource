@@ -19,7 +19,6 @@ const CheckOptions = (props) => {
     }
 
     const [selectionIndex, setSelectionIndex] = useState("");
-    // const [selection, setSelection] = useState([]);
     const initalSelection = []
     const [selection, dispatch] = useReducer(reducer, initalSelection)
 
@@ -39,16 +38,6 @@ const CheckOptions = (props) => {
             dispatch({type: 'ADD', payload: props.x.from[selectionIndex]});
         }
     },[selectionIndex, props.x.from]);
-    
-    // useEffect(() =>{
-    //     if(selectionIndex !== ""){
-    //         setSelection([
-    //             ...selection,
-    //             props.x.from[selectionIndex],    
-    //         ]);
-    //     }
-       
-    // },[selectionIndex, props.x.from]);
 
     console.log("ckbox", selection);
 
