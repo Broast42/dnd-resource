@@ -8,6 +8,9 @@ import BackgroundBox from './BackgroundBox';
 import PlayerNameBox from './PlayerNameBox';
 import RaceBox from './RaceBox';
 import AlignmentBox from './AlignmentBox';
+import AbilityBox from './AbilityBox';
+import SkillsBox from './SkillsBox';
+import AbilityBonusBox from './AbilityBonusBox';
 
 const CharacterSheet = (props) => {
 
@@ -46,6 +49,12 @@ const CharacterSheet = (props) => {
                 <div className="sheet-body-col">
                     <div className="body-col-1-top col-1" >
                         <div className="body-col-1-1">
+                            <AbilityBonusBox name="Strength"/>
+                            <AbilityBonusBox name="Dexterity"/>
+                            <AbilityBonusBox name="Cosnstitution"/>
+                            <AbilityBonusBox name="Intelligence"/>
+                            <AbilityBonusBox name="Wisdom"/>
+                            <AbilityBonusBox name="Charisma"/>
 
                         </div>
                         <div className="body-col-1-2">
@@ -56,7 +65,6 @@ const CharacterSheet = (props) => {
                                 <div className="insperation-lable">
                                     <p>Inspiration</p>
                                 </div>
-
                             </div>
                             <div className="prof-bonus">
                                 <div className="prof-bonus-lable">
@@ -65,8 +73,9 @@ const CharacterSheet = (props) => {
                                 <div className="prof-bonus-bonus">
                                     <p>num</p>
                                 </div>
-
                             </div>
+                            <AbilityBox />
+                            <SkillsBox />
 
                         </div>
                     </div>

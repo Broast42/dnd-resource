@@ -82,7 +82,7 @@ const BackgroundBox = (props) => {
         setSpecality('');
     },[backSelected])
 
-    console.log('bg',  props.data, specialty);
+    //console.log('bg',  props.data, specialty);
     return(
         <div>
             <div className="info-box" onClick={backViewChange}>
